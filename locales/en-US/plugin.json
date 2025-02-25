@@ -4,7 +4,9 @@
     "function_call": "Function Call",
     "off": "Turn off debug",
     "on": "View plugin invocation information",
-    "response": "Response"
+    "payload": "plugin payload",
+    "response": "Response",
+    "tool_call": "tool call request"
   },
   "detailModal": {
     "info": {
@@ -68,7 +70,7 @@
         "pattenErrorMessage": "Only alphanumeric characters, hyphen -, and underscore _ are allowed"
       },
       "manifest": {
-        "desc": "LobeChat will install the plugin using this link",
+        "desc": "{{appName}} will install the plugin through this link.",
         "label": "Plugin Description (Manifest) URL",
         "preview": "Preview Manifest",
         "refresh": "Refresh"
@@ -116,6 +118,10 @@
     "reinstallError": "Failed to refresh plugin {{name}}",
     "urlError": "The link did not return content in JSON format. Please ensure it is a valid link."
   },
+  "inspector": {
+    "args": "View parameter list",
+    "pluginRender": "View plugin interface"
+  },
   "list": {
     "item": {
       "deprecated.title": "Deleted",
@@ -128,9 +134,21 @@
     "plugin": "Plugin is running..."
   },
   "pluginList": "Plugin List",
-  "plugins": {
-    "loading": "Detecting plugins...",
-    "unknown": "Unknown Plugin"
+  "search": {
+    "config": {
+      "addKey": "Add Key",
+      "close": "Delete",
+      "confirm": "Configuration completed, please retry"
+    },
+    "searchxng": {
+      "baseURL": "Please enter",
+      "description": "Enter the URL for SearchXNG to start online searching",
+      "keyPlaceholder": "Please enter key",
+      "title": "Configure SearchXNG Search Engine",
+      "unconfiguredDesc": "Please contact the administrator to complete the SearchXNG search engine configuration to start online searching",
+      "unconfiguredTitle": "SearchXNG search engine not configured yet"
+    },
+    "title": "Online Search"
   },
   "setting": "Plugin Settings",
   "settings": {
@@ -141,6 +159,7 @@
     "modalDesc": "After configuring the address of the plugin marketplace, you can use a custom plugin marketplace",
     "title": "Configure Plugin Marketplace"
   },
+  "showInPortal": "Please check the details in the Portal view",
   "store": {
     "actions": {
       "confirmUninstall": "The plugin is about to be uninstalled. After uninstalling, the plugin configuration will be cleared. Please confirm your operation.",
@@ -162,5 +181,6 @@
       "installed": "Installed"
     },
     "title": "Plugin Store"
-  }
+  },
+  "unknownPlugin": "Unknown plugin"
 }

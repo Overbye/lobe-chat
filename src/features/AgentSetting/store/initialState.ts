@@ -6,8 +6,10 @@ import { MetaData } from '@/types/meta';
 export interface State {
   autocompleteLoading: SessionLoadingState;
   config: LobeAgentConfig;
-  meta: MetaData;
+  id?: string;
+  loading?: boolean;
 
+  meta: MetaData;
   onConfigChange?: (config: LobeAgentConfig) => void;
   onMetaChange?: (meta: MetaData) => void;
 }
@@ -22,7 +24,7 @@ export const initialState: State = {
     tags: false,
     title: false,
   },
-
   config: DEFAULT_AGENT_CONFIG,
+  loading: true,
   meta: DEFAULT_AGENT_META,
 };
