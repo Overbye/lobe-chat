@@ -1,64 +1,35 @@
-import { IPluginErrorType } from '@lobehub/chat-plugin-sdk';
+import { UploadFileItem } from '@/types/files';
 
-import { ILobeAgentRuntimeErrorType } from '@/libs/agent-runtime';
-import { ErrorType } from '@/types/fetch';
-
-import { LLMRoleType } from '../llm';
-import { BaseDataModel } from '../meta';
-import { ChatPluginPayload } from './tools';
-import { Translate } from './translate';
-
-/**
- * 聊天消息错误对象
- */
-export interface ChatMessageError {
-  body?: any;
-  message: string;
-  type: ErrorType | IPluginErrorType | ILobeAgentRuntimeErrorType;
-}
-
-export interface ChatTranslate extends Translate {
-  content?: string;
-}
-
-export interface ChatTTS {
-  contentMd5?: string;
-  file?: string;
-  voice?: string;
-}
-
+export * from './base';
+export * from './chat';
 export * from './tools';
 
-export interface ChatMessage extends BaseDataModel {
-  content: string;
-  error?: ChatMessageError;
-  // 扩展字段
-  extra?: {
-    fromModel?: string;
-    fromProvider?: string;
-    // 翻译
-    translate?: ChatTranslate | false;
-    // TTS
-    tts?: ChatTTS;
-  } & Record<string, any>;
-
-  files?: string[];
-  parentId?: string;
-  plugin?: ChatPluginPayload;
-  pluginState?: any;
-
-  // 引用
-  quotaId?: string;
+export interface SendMessageParams {
   /**
-   * 角色
-   * @description 消息发送者的角色
+   * create a thread
    */
-  role: LLMRoleType;
-  sessionId?: string;
+  createThread?: boolean;
+  files?: UploadFileItem[];
   /**
-   * 保存到主题的消息
+   *
+   * https://github.com/lobehub/lobe-chat/pull/2086
    */
-  topicId?: string;
+  isWelcomeQuestion?: boolean;
+  message: string;
+  onlyAddUserMessage?: boolean;
 }
 
-export type ChatMessageMap = Record<string, ChatMessage>;
+export interface SendThreadMessageParams {
+  /**
+   * create a thread
+   */
+  createNewThread?: boolean;
+  // files?: UploadFileItem[];
+  message: string;
+  onlyAddUserMessage?: boolean;
+}
+
+export interface ModelRankItem {
+  count: number;
+  id: string | null;
+}

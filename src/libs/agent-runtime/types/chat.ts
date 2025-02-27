@@ -1,9 +1,17 @@
-export type LLMRoleType = 'user' | 'system' | 'assistant' | 'function';
+import { MessageToolCall } from '@/types/message';
 
+export type LLMRoleType = 'user' | 'system' | 'assistant' | 'function' | 'tool';
+
+interface UserMessageContentPartThinking {
+  signature: string;
+  thinking: string;
+  type: 'thinking';
+}
 interface UserMessageContentPartText {
   text: string;
   type: 'text';
 }
+
 interface UserMessageContentPartImage {
   image_url: {
     detail?: 'auto' | 'low' | 'high';
@@ -12,7 +20,10 @@ interface UserMessageContentPartImage {
   type: 'image_url';
 }
 
-export type UserMessageContentPart = UserMessageContentPartText | UserMessageContentPartImage;
+export type UserMessageContentPart =
+  | UserMessageContentPartText
+  | UserMessageContentPartImage
+  | UserMessageContentPartThinking;
 
 export interface OpenAIChatMessage {
   /**
@@ -27,12 +38,18 @@ export interface OpenAIChatMessage {
    * @description 消息发送者的角色
    */
   role: LLMRoleType;
+  tool_call_id?: string;
+  tool_calls?: MessageToolCall[];
 }
 
 /**
  * @title Chat Stream Payload
  */
 export interface ChatStreamPayload {
+  /**
+   * 是否开启搜索
+   */
+  enabledSearch?: boolean;
   /**
    * @title 控制生成文本中的惩罚系数，用于减少重复性
    * @default 0
@@ -63,10 +80,12 @@ export interface ChatStreamPayload {
    * @default 0
    */
   presence_penalty?: number;
+
   /**
    * @default openai
    */
   provider?: string;
+  responseMode?: 'streamText' | 'json';
   /**
    * @title 是否开启流式请求
    * @default true
@@ -74,9 +93,16 @@ export interface ChatStreamPayload {
   stream?: boolean;
   /**
    * @title 生成文本的随机度量，用于控制文本的创造性和多样性
-   * @default 0.5
+   * @default 1
    */
   temperature: number;
+  /**
+   * use for Claude
+   */
+  thinking?: {
+    budget_tokens: number;
+    type: 'enabled' | 'disabled';
+  };
   tool_choice?: string;
   tools?: ChatCompletionTool[];
   /**
@@ -84,6 +110,23 @@ export interface ChatStreamPayload {
    * @default 1
    */
   top_p?: number;
+}
+
+export interface ChatCompetitionOptions {
+  callback?: ChatStreamCallbacks;
+  /**
+   * response headers
+   */
+  headers?: Record<string, any>;
+  /**
+   * send the request to the ai api endpoint
+   */
+  requestHeaders?: Record<string, any>;
+  signal?: AbortSignal;
+  /**
+   * userId for the chat completion
+   */
+  user?: string;
 }
 
 export interface ChatCompletionFunctions {
@@ -116,4 +159,20 @@ export interface ChatCompletionTool {
    * The type of the tool. Currently, only `function` is supported.
    */
   type: 'function';
+}
+
+export interface ChatStreamCallbacks {
+  /**
+   * `onCompletion`: Called for each tokenized message.
+   **/
+  onCompletion?: (completion: string) => Promise<void> | void;
+  /** `onFinal`: Called once when the stream is closed with the final completion message. */
+  onFinal?: (completion: string) => Promise<void> | void;
+  /** `onStart`: Called once when the stream is initialized. */
+  onStart?: () => Promise<void> | void;
+  /** `onText`: Called for each text chunk. */
+  onText?: (text: string) => Promise<void> | void;
+  /** `onToken`: Called for each tokenized message. */
+  onToken?: (token: string) => Promise<void> | void;
+  onToolCall?: () => Promise<void> | void;
 }

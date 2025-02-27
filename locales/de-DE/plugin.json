@@ -4,7 +4,9 @@
     "function_call": "Funktionsaufruf",
     "off": "Debugging deaktivieren",
     "on": "Plugin-Aufrufinformationen anzeigen",
-    "response": "Antwort"
+    "payload": "Plugin-Payload",
+    "response": "Antwort",
+    "tool_call": "Tool Call Request"
   },
   "detailModal": {
     "info": {
@@ -68,7 +70,7 @@
         "pattenErrorMessage": "Es können nur Buchstaben, Zahlen, - und _ eingegeben werden"
       },
       "manifest": {
-        "desc": "LobeChat wird das Plugin über diesen Link installieren",
+        "desc": "{{appName}} wird das Plugin über diesen Link installieren.",
         "label": "Plugin-Beschreibungsdatei (Manifest) URL",
         "preview": "Vorschau des Manifests",
         "refresh": "Aktualisieren"
@@ -116,6 +118,10 @@
     "reinstallError": "Fehler beim Aktualisieren des Plugins {{name}}.",
     "urlError": "Der Link hat keine JSON-Format-Inhalte zurückgegeben. Stellen Sie sicher, dass der Link gültig ist."
   },
+  "inspector": {
+    "args": "Parameterliste anzeigen",
+    "pluginRender": "Plugin-Oberfläche anzeigen"
+  },
   "list": {
     "item": {
       "deprecated.title": "Veraltet",
@@ -128,9 +134,21 @@
     "plugin": "Plugin wird ausgeführt..."
   },
   "pluginList": "Plugin-Liste",
-  "plugins": {
-    "loading": "Plugins werden überprüft...",
-    "unknown": "Unbekanntes Plugin"
+  "search": {
+    "config": {
+      "addKey": "Schlüssel hinzufügen",
+      "close": "Löschen",
+      "confirm": "Konfiguration abgeschlossen und erneut versucht"
+    },
+    "searchxng": {
+      "baseURL": "Bitte eingeben",
+      "description": "Geben Sie die URL von SearchXNG ein, um mit der Online-Suche zu beginnen",
+      "keyPlaceholder": "Bitte Schlüssel eingeben",
+      "title": "SearchXNG-Suchmaschine konfigurieren",
+      "unconfiguredDesc": "Bitte wenden Sie sich an den Administrator, um die Konfiguration der SearchXNG-Suchmaschine abzuschließen und mit der Online-Suche zu beginnen",
+      "unconfiguredTitle": "SearchXNG-Suchmaschine ist noch nicht konfiguriert"
+    },
+    "title": "Online-Suche"
   },
   "setting": "Plugin-Einstellung",
   "settings": {
@@ -141,6 +159,7 @@
     "modalDesc": "Nachdem Sie die Adresse des Plugin-Marktes konfiguriert haben, können Sie den benutzerdefinierten Plugin-Markt verwenden.",
     "title": "Plugin-Markteinstellungen"
   },
+  "showInPortal": "Bitte überprüfen Sie die Details im Portal",
   "store": {
     "actions": {
       "confirmUninstall": "Das Plugin wird deinstalliert und alle Konfigurationen werden gelöscht. Bitte bestätigen Sie Ihre Aktion.",
@@ -162,5 +181,6 @@
       "installed": "Installiert"
     },
     "title": "Plugin-Shop"
-  }
+  },
+  "unknownPlugin": "Unbekanntes Plugin"
 }

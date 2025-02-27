@@ -4,7 +4,9 @@
     "function_call": "Chiamata di funzione",
     "off": "Disattivato",
     "on": "Visualizza informazioni sulla chiamata del plugin",
-    "response": "Risposta"
+    "payload": "carico del plugin",
+    "response": "Risposta",
+    "tool_call": "richiesta di chiamata dello strumento"
   },
   "detailModal": {
     "info": {
@@ -68,7 +70,7 @@
         "pattenErrorMessage": "Puoi inserire solo caratteri alfanumerici, - e _"
       },
       "manifest": {
-        "desc": "LobeChat installerà il plugin da questo collegamento",
+        "desc": "{{appName}} installerà il plugin tramite questo link",
         "label": "URL del file di descrizione del plugin (Manifest)",
         "preview": "Anteprima Manifest",
         "refresh": "Aggiorna"
@@ -116,6 +118,10 @@
     "reinstallError": "Ricaricamento del plugin {{name}} fallito",
     "urlError": "Il collegamento non restituisce contenuti nel formato JSON. Assicurati che il collegamento sia valido"
   },
+  "inspector": {
+    "args": "Visualizza l'elenco dei parametri",
+    "pluginRender": "Visualizza l'interfaccia del plugin"
+  },
   "list": {
     "item": {
       "deprecated.title": "Deprecato",
@@ -128,9 +134,21 @@
     "plugin": "Esecuzione del plugin in corso..."
   },
   "pluginList": "Elenco dei plugin",
-  "plugins": {
-    "loading": "Rilevamento dei plugin in corso...",
-    "unknown": "Plugin sconosciuto"
+  "search": {
+    "config": {
+      "addKey": "Aggiungi chiave",
+      "close": "Rimuovi",
+      "confirm": "Configurazione completata, riprovare"
+    },
+    "searchxng": {
+      "baseURL": "Inserisci",
+      "description": "Inserisci l'URL di SearchXNG per iniziare la ricerca online",
+      "keyPlaceholder": "Inserisci chiave",
+      "title": "Configura il motore di ricerca SearchXNG",
+      "unconfiguredDesc": "Contatta l'amministratore per completare la configurazione del motore di ricerca SearchXNG e iniziare la ricerca online",
+      "unconfiguredTitle": "Motore di ricerca SearchXNG non configurato"
+    },
+    "title": "Ricerca online"
   },
   "setting": "Impostazioni del plugin",
   "settings": {
@@ -141,6 +159,7 @@
     "modalDesc": "Dopo aver configurato l'indirizzo del mercato dei plugin, è possibile utilizzare un mercato dei plugin personalizzato",
     "title": "Impostazioni del mercato dei plugin"
   },
+  "showInPortal": "Si prega di visualizzare i dettagli nell'area di lavoro",
   "store": {
     "actions": {
       "confirmUninstall": "Stai per disinstallare questo plugin. La disinstallazione cancellerà la configurazione del plugin. Conferma l'operazione",
@@ -162,5 +181,6 @@
       "installed": "Installati"
     },
     "title": "Negozio dei plugin"
-  }
+  },
+  "unknownPlugin": "Plugin sconosciuto"
 }
